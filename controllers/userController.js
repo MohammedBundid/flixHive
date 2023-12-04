@@ -19,9 +19,7 @@ const movies = async (req, res) => {
             title: "movies",
             desc: "movies to watch",
         }
-
-        console.log("Request URL:", requests.requestNowPlaying);
-
+        
         const data = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`)
             .then(response => response.json())
             .catch((error) => {

@@ -18,7 +18,7 @@ app.use(cors({
     origin: "https://www.youtube.com"
 }))
 
-app.use('/a/v1', userRoutes)
+app.use('/', userRoutes)
 
 app.listen(PORT, (req, res) => {
     console.log(`app listening on port ${PORT}`)
