@@ -1,0 +1,47 @@
+<div class="sidebar">
+    <h3 class="sd-titles">filter by genre: </h3>
+    <div class="sidebar-items flex">
+        <% const sidebarItems = [
+            'action',
+            'comedy',
+            'documentary',
+            'drama',
+            'Fantasy',
+            'Horror',
+            'Musical',
+            'Mystery',
+            'Romance',
+            'Science Fiction',
+            'Thriller',
+            'Western'
+        ] %>
+
+        <% for( let index = 0; index < sidebarItems.length; index++ ) { %>
+                <div class="sd-item">
+                    <h4><%= sidebarItems[index] %></h4>
+                </div>
+        <% } %>
+    </div>
+    <h4 class="sd-titles">popular tags: </h4>
+    <div class="movie-tags sidebar-items flex">
+        <% const popularTags = [
+            'Adventure',
+            'Disaster',
+            'Martial Art',
+            'Spy',
+            'Superhero',
+            'Action thriller',
+            'Action-horror',
+            'Vampire',
+            'Romantic comedy',
+            'Dystopia',
+            'Cyberpunk',
+            'Film noir'
+        ] %>
+        <% for( let index = 0; index < popularTags.length; index++ ) { %>
+                <div class="sd-item">
+                    <h4><%= popularTags[index] %></h4>
+                </div>
+        <% } %>
+    </div>
+</div>

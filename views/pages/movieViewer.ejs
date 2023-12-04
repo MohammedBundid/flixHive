@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs') %>
+    <main class="mvViewer">
+        <div class="movieViewPoster">
+            <img src=<%=`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`%> width="200" height="300" alt = <%= data?.title %>>
+        </div>
+        <div class="descView">
+            <div class="descTitle">
+                <h2><%= data.title %></h2>
+            </div>
+            <div class="descOverview">
+                <h4>overview</h4>
+                <p><%= data.overview %></p>
+            </div>
+            <div class="descDetails">
+                <div class="left">
+                    <h3>release date</h3>
+                    <hr>
+                    <p><%= data.release_date %></p>
+                </div>
+                <div class="right">
+                    <h3>language</h3>
+                    <hr>
+                    <p><%= data.original_language %></p>
+                </div>
+            </div>
+
+            <div class="play-buttons">
+                <a href="/a/v1/movies/watch-trailer/<%= data.id %>" class="btn-play">
+                    <img src="/img/trailer.png" alt="trailer"> play trailer
+                </a>
+                <a href="/a/v1/movies/" class="btn-play">
+                    <img src="/img/film.png" alt="trailer">watch movie
+                </a>
+            </div>
+        </div>
+    </main>
+<%- include('../partials/footer.ejs') %>
