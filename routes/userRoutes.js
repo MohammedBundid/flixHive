@@ -2,7 +2,7 @@ const express = require('express');
 const userController = require('../controllers/userController')
 const router = express.Router()
 
-router.get('/', userController.home)
+router.get('/', userController.movies)
 router.get('/movies', userController.movies)
 router.get('/shows', userController.tv_shows)
 

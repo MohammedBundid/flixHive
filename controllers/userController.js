@@ -3,14 +3,14 @@ const requests = require('../helpers/requests')
 const key = process.env.key;
 
 
-const home = (req, res) => {
-    // res.send('hello world');
-    const locals = {
-        title: "home",
-        desc: "flixhive, a free movie streaming site"
-    }
-    res.render('index', locals);
-}
+// const home = (req, res) => {
+//     // res.send('hello world');
+//     const locals = {
+//         title: "home",
+//         desc: "flixhive, a free movie streaming site"
+//     }
+//     res.render('pages/movies', locals);
+// }
 
 const movies = async (req, res) => {
  
@@ -110,7 +110,7 @@ const movieTrailer  = async (req, res) => {
 }
 
 module.exports = {
-    home,
+    // home,
     movies,
     tv_shows,
     movieById,
