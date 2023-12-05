@@ -7,12 +7,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 4000
+const PORT = 4000 || process.env.PORT 
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'));
 app.use(logger('dev'))
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 app.use(cors({
     origin: "https://www.youtube.com"
