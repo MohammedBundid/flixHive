@@ -1,0 +1,24 @@
+<div class="movie-cont">
+    <div class="filter-container">
+        <h2>filter</h2>
+        <i class="fa-solid fa-filter"></i>
+    </div>
+    <div class="grid movie-grid">
+        <%= console.log(shows) %>
+        <% shows.forEach(show => { %>
+            <a href="/shows/<%= show.id %>">
+                <div class="single-movie">
+                    <div class="thumbnail">
+                        <img src=<%=`https://image.tmdb.org/t/p/original/${show?.backdrop_path}`%> width="200" height="300" alt = <%= show?.title %>>
+                    </div>
+                    <div class="desc">
+                        <div class="movie-title">
+                            <h4><%= show.name %></h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+    
+</div>

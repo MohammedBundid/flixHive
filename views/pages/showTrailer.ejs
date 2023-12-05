@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs') %>
+    <main class="main">
+        <div class="trailerContainer">
+            <% if (data.videos && data.videos.results.length > 0) { %>
+                <% const officialTrailer = data.videos.results.find(video => video.type === 'Trailer' || video.official === true); %>
+                <div class="trailerItem">
+                    <iframe style="width: 100%; height: 100%;" src="https://www.youtube.com/embed/<%= officialTrailer.key %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            <% } else { %>
+                <p>No trailer available</p>
+            <% } %>
+
+<!-- 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oqJY1L0gnto?si=kq1TapQqlt_uAhmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+        </div>
+    </main>
+<%- include('../partials/footer.ejs') %>
