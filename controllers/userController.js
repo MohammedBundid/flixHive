@@ -24,6 +24,7 @@ const movies = async (req, res) => {
             .then(response => response.json())
             .catch((error) => {
                 console.log("Error fetching data:", error.message)
+                res.status(500).send('Error fetching movie data');
                 throw error;
             })
 
