@@ -1,7 +1,11 @@
 // const { response } = require('express');
 const requests = require('../helpers/requests')
+const userService = require('../services/userService')
+const Redis = require('redis')
+const cacheUtility = require('../utils/cacheUtil')
 const key = process.env.key;
-
+const redisClient = Redis.createClient()
+const DEFAULTEXPDATE = 3600
 
 // const home = (req, res) => {
 //     // res.send('hello world');
@@ -20,15 +24,9 @@ const movies = async (req, res) => {
             desc: "movies to watch",
         }
         
-        const data = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`)
-            .then(response => response.json())
-            .catch((error) => {
-                console.log("Error fetching data:", error.message)
-                res.status(500).send('Error fetching movie data');
-                throw error;
-            })
+        const moviesData = await cacheUtility.fetchCachedMovies()
 
-        locals.movies = data.results
+        locals.movies = moviesData
 
     res.render('pages/movies', locals);
 
@@ -39,22 +37,14 @@ const movies = async (req, res) => {
 }
 
 const tv_shows = async (req, res) => {
-    // res.send('hello world');
     try {
         const locals = {
             title: "shows for you to watch",
             desc: "movies to watch",
         }
         
-        const data = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${key}&language=en-US&page=1`)
-            .then(response => response.json())
-            .catch((error) => {
-                console.log("Error fetching data:", error.message)
-                res.status(500).send('Error fetching movie data');
-                throw error;
-            })
-
-        locals.shows = data.results
+        const showsData = await cacheUtility.fetchCachedShows()
+        locals.shows = showsData
 
     res.render('pages/shows', locals);
 
@@ -190,12 +180,20 @@ const account = (req, res) => {
     };
     res.render('pages/SOON.ejs', locals);
 }
-const register = (req, res) => {
+const register =  (req, res) => {
     const locals = {
         title: "coming soon",
         desc: "coming soon",
     };
-    res.render('pages/SOON.ejs', locals);
+
+    // try {
+    //     await userService.register()
+    //     res.render('pages/SOON.ejs', locals);
+    // } catch (error) {
+    //     console.error(error);
+    //     res.status(500).send("Internal Server Error");
+    // }
+    
 }
 
 module.exports = {
