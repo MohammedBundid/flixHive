@@ -1,12 +1,30 @@
 <footer>
     <div class="footer">
         <ul class="pagination-container">
-            <% for( let index = 1; index <= 5; index++ ) { %>
-                <li><%= index %></li>
+            <% if (currentPage > 1) { %>
+                <a href="/<%= contentType %>?page=<%= currentPage - 1 %>"><li class="prev">Prev</li></a>
+            <% } %>
+
+            <% if (currentPage > 5) { %>
+                <!-- Show ellipsis or any indicator for more pages -->
+                <li class="ellipsis">...</li>
+            <% } %>
+
+            <% for (let index = Math.max(1, currentPage - 2); index <= Math.min(totalPages, currentPage + 2); index++) { %>
+                <a href="/<%= contentType %>?page=<%= index %>"><li class="<%= index === currentPage ? 'active' : 'paginationNums' %>"><%= index %></li></a>
+            <% } %>
+
+            <% if (currentPage + 2 < totalPages) { %>
+                <!-- Show ellipsis or any indicator for more pages -->
+                <li class="ellipsis">...</li>
+            <% } %>
+
+            <% if (currentPage < totalPages) { %>
+                <a href="/<%= contentType %>?page=<%= currentPage + 1 %>"><li class="next">Next</li></a>
             <% } %>
         </ul>
     </div>
-    
+
     <p>copyright &copy; FLIXHIVE <%= new Date().getFullYear() %></p>
 </footer>
 <script src="/js/script.js"></script>

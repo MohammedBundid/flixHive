@@ -110,8 +110,9 @@ body {
 }
 
 .menu {
+    display: none;
     position: absolute;
-    top: 30%;
+    top: 25%;
     right: 0;
     width: 200px;
     height: 500px;
@@ -119,7 +120,7 @@ body {
     background-color: var(--PRIMARY);
     /* animation: bar-slide 4s ease-in-out; */
     font-family: var(--FONT2);
-    transform: translateX(600px);
+    /* transform: translateX(-500px); */
     transition: all 1s ease-in;
     z-index: 2;
 
@@ -138,8 +139,13 @@ body {
 
 
 .show {
-    transform: translateX(50px);
+    display: block;
+    /* transform: translateX(30px); */
 }
+
+/* .hidden {
+    display: none;
+} */
 
 /* ! SIDEBAR & MAIN*/
 .main {
@@ -148,6 +154,8 @@ body {
     display: flex;
     justify-content: center;
     background-color: var(--PRIMARY);
+    overflow-x: hidden;
+
 }
 
 .sidebar {
@@ -270,7 +278,7 @@ body {
 /* !VIEW SINGLE MOVIE & DETAILS */
 
 .mvViewer {
-    max-width: 100%;
+    width: 100%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -393,19 +401,56 @@ footer {
     gap: 15px;
 }
 
+
 .footer li {
     width: 50px;
     height: 50px;
     padding: 6px;
     background-color: var(--COMPLIMENTARY);
-    color: #333;
+    color: #fff;
     border-radius: 50%;
     font-size: 24px;
     list-style-type: none;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+        cursor: pointer;
+        color: #333;
+    }
+
 }
+
+.footer li.next {
+    font-family: var(--FONT1);
+    font-size: small;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--BUTTON);
+
+    &:hover {
+        color: greenyellow;
+    }
+}
+
+.footer li.prev {
+    font-family: var(--FONT1);
+    font-size: small;
+    background-color: var(--BUTTON);
+
+    &:hover {
+        color: greenyellow;
+    }
+}
+
+.footer li.active {
+    background-color: #000022;
+    font-weight: bold;
+    color: greenyellow;
+}
+
 
 footer p {
     text-align: center;
@@ -455,6 +500,7 @@ footer p {
     font-family: var(--FONT2);
 
     & ul li {
+        padding: 10px;
         list-style-type: disc;
         color: rgb(22, 205, 230);
     }
@@ -466,10 +512,12 @@ footer p {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px;
+    font-size: 40px;
+    
 }
 
-/* !! MEDIA QUERIES FOR RESPONSIVE FEEL  */
+/* !! MEDIA QUERIES FOR RESPONSIVE FEEL  */ 
+/* ADDED RESPONSIVENESS TO ALL SCREEN WIDTHS AND SIZES*/
 
 /* MOBILE AND SMALL DEVICES */
 @media screen and (min-width: 320px) {
@@ -486,10 +534,115 @@ footer p {
     }
  
     .single-movie {
-         width: 94px;
+         width: 100px;
          height: 200px;
     }
- }
+
+    .mvViewer {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movieViewPoster {
+        width: 300px;
+        height: 300px;
+    }
+
+    .descView {
+        width: 100%;
+        font-size: small;
+    }
+
+    .btn-play {
+        font-size: small;
+        padding: 4px 12px;
+    }
+
+    .trailerContainer {
+        width: 90%;
+        height: 280px;
+    }
+    
+}
+@media screen and (min-width: 375px) {
+    .grid {
+         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .navbar {
+        display: none;
+    }
+ 
+    .sidebar {
+         display: none;
+    }
+ 
+    .single-movie {
+         width: 115px;
+         height: 240px;
+    }
+
+    .mvViewer {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movieViewPoster {
+        width: 350px;
+        height: 330px;
+    }
+
+    .descView {
+        width: 100%;
+        font-size: small;
+    }
+
+    .btn-play {
+        font-size: small;
+        padding: 4px 12px;
+    }
+}
+@media screen and (min-width: 425px) {
+    .grid {
+         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .navbar {
+        display: none;
+    }
+ 
+    .sidebar {
+         display: none;
+    }
+ 
+    .single-movie {
+         width: 130px;
+         height: 250px;
+    }
+
+    .mvViewer {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movieViewPoster {
+        width: 380px;
+        height: 340px;
+    }
+
+    .descView {
+        width: 100%;
+        font-size: small;
+    }
+
+    .btn-play {
+        font-size: small;
+        padding: 4px 12px;
+    }
+}
 @media screen and (min-width: 576px) {
     .grid {
          grid-template-columns: repeat(3, 1fr);
@@ -506,6 +659,32 @@ footer p {
     .single-movie {
          width: 180px;
          height: 180px;
+    }
+
+    .mvViewer {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movieViewPoster {
+        width: 500px;
+        height: 300px;
+    }
+
+    .descView {
+        width: 100%;
+        font-size: small;
+    }
+
+    .btn-play {
+        font-size: small;
+        padding: 4px 12px;
+    }
+
+    .trailerContainer {
+        width: 90%;
+        height: 380px;
     }
  }
 @media only screen and (min-width: 768px) {
@@ -526,21 +705,23 @@ footer p {
     }
  
     .single-movie {
-         width: 130px;
-         height: 280px;
+         width: 140px;
+         height: 300px;
     }
 
     .mvViewer {
         flex-direction: column;
+        align-items: center;
     }
 
     .movieViewPoster {
-        width: 400px;
-        height: 300px;
+        width: 600px;
+        height: 400px;
     }
 
     .descView {
-        width: 450px;
+        width: 600px;
+        font-size: 16px;
     }
 
     .trailerContainer {
@@ -549,8 +730,6 @@ footer p {
         height: 60vh;
     }
  }
- 
- /* TABLET DEVICES */
  @media only screen and (min-width: 992px) {
     .navbar {
         display: block;
@@ -579,9 +758,55 @@ footer p {
         width: 600px;
         height: 60vh;
     }
+
+    .mvViewer {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .movieViewPoster {
+        width: 700px;
+        height: 450px;
+    }
+
+    .descView {
+        width: 100%;
+        font-size: small;
+    }
+
+    .btn-play {
+        font-size: 18px;
+        padding: 4px 12px;
+    }
  }
- 
- /* DESKTOP DEVICES */
+ @media only screen and (min-width: 1024px) {
+   
+    .trailerContainer {
+        padding: 10px;
+        width: 90%;
+        height: 60vh;
+    }
+
+    .mvViewer {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .movieViewPoster {
+        width: 700px;
+        height: 450px;
+    }
+
+    .descView {
+        width: 100%;
+        font-size: small;
+    }
+
+    .btn-play {
+        font-size: 18px;
+        padding: 4px 12px;
+    }
+ }
 
  @media only screen and (min-width: 1200px) {
     .navbar {
@@ -605,10 +830,11 @@ footer p {
          height: 280px;
     }
     .trailerContainer {
-        padding: 10px;
-        width: 800px;
-        height: 80vh;
+        width: 90%;
+        height: 500px;
     }
+
+    
  }
  @media only screen and (min-width: 1400px) {
     .navbar {
@@ -630,5 +856,25 @@ footer p {
     .single-movie {
          width: 180px;
          height: 280px;
+    }
+
+    .mvViewer {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .movieViewPoster {
+        width: 800px;
+        height: 500px;
+    }
+
+    .descView {
+        width: 800px;
+        font-size: 24;
+    }
+
+    .btn-play {
+        font-size: 18;
+        padding: 12px 18px;
     }
  }

@@ -12,6 +12,8 @@ router.get('/movies/watch-trailer/:id', userController.movieTrailer)
 router.get('/shows/:id', userController.showById)
 router.get('/shows/watch-trailer/:id', userController.showTrailer)
 
+// router.get('/movies/:page', userController.PaginationMovies)
+
 router.get('/account', userController.account);
 router.get('/register', userController.register);
 

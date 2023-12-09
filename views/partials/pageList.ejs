@@ -1,0 +1,23 @@
+<div class="movie-cont">
+    <div class="filter-container">
+        <h2>filter</h2>
+        <i class="fa-solid fa-filter"></i>
+    </div>
+    <div class="grid movie-grid">
+        <% movies.forEach(movie => { %>
+            <a href="/movies/<%= movie.id %>">
+                <div class="single-movie">
+                    <div class="thumbnail">
+                        <img src=<%=`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`%> width="200" height="300" alt = <%= movie?.title %>>
+                    </div>
+                    <div class="desc">
+                        <div class="movie-title">
+                            <h4><%= movie.title %></h4>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        <% }) %>
+    </div>
+    
+</div>
